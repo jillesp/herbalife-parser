@@ -80,8 +80,8 @@ try {
 
   function parseLocation() {
     const file = path.resolve(__dirname, `./output/${SHEET_ID}.json`);
+    const json = { locations: {} }
     let data = fs.readFileSync(file, {encoding: 'utf8'})
-    
     if(data.length < 1) {
       throw new Error("File content not found.")
     } else {
@@ -92,8 +92,11 @@ try {
           client.geocode({
             address: entry.address
           }, (err, response) => {
+            if(err) throw err
             entry.coordinates = response.json.results[0].geometry.location
-            fs.writeFileSync(`./output/parsed.${SHEET_ID}.json`, jsonf(data), {encoding: 'utf8'})
+            json.locations = data
+            
+            fs.writeFileSync(`./output/parsed.${SHEET_ID}.json`, jsonf(json), {encoding: 'utf8'})
           })
         }
       })
