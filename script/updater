@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const axios = require('axios');
+
+const JSON_BIN_ROOT = "https://api.jsonbin.io/";
+const JSON_BIN_ID = "5d197e99a8635a778e65eac1";
+const JSON_BIN_SECRET_KEY = "$2a$10$NIl4UEjdKgrxPQs3Z.f8q.HRPDVYNm0IIMLhH5cflTwpcshLO1.Cm";
+
+const SHEET_ID = "1pHwXzDlDYAoiaqhTcpwkCfx3gXyx2as3X2UwrQvr-J4"
+
+try {
+  const data = fs.readFileSync(`./output/${SHEET_ID}.json`, {encoding: 'utf8'});
+  const instance = axios.create({
+    baseURL: JSON_BIN_ROOT,
+    headers: {
+      'Content-Type': 'application/json',
+      'secret-key': JSON_BIN_SECRET_KEY,
+      'versioning': false
+    }
+  });
+
+  instance.put(`/b/${JSON_BIN_ID}`, data).then( (response) => {
+    // console.log(response)
+  })
+
+} catch (err) {
+  console.log(`Error: ${err.message}`)
+}

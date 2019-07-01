@@ -1,0 +1,28 @@
+{
+  "name": "herbalife-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "csvtojson": "^2.0.10",
+    "fs": "^0.0.1-security",
+    "googleapis": "^39.2.0",
+    "json-beautify": "^1.1.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jillesp/herbalife-parser.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jillesp/herbalife-parser/issues"
+  },
+  "homepage": "https://github.com/jillesp/herbalife-parser#readme"
+}
